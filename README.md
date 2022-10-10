@@ -1,12 +1,24 @@
-# mo-lar
+# README
 
-<img src="https://i.pinimg.com/564x/f4/ee/29/f4ee290f393d106afc316a55a024b256.jpg" width="100" height="100">
-Plojeto da disciplina de Ploglamação Distlibuída.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Platafolma web pala compla e venda de imóveis de maneila espetacular!
+Things you may want to cover:
 
+* Ruby version
 
-### Grupo
-- João Jorge Evangelista Fernandes;
-- Matheus David Araujo Santos;
-- Hugo Leonardo Penha de Sousa.
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
