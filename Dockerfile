@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.7
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-WORKDIR /mo-lar
-COPY Gemfile /mo-lar/Gemfile
-COPY Gemfile.lock /mo-lar/Gemfile.lock
+WORKDIR /molar_usuarios
+COPY Gemfile /molar_usuarios/Gemfile
+COPY Gemfile.lock /molar_usuarios/Gemfile.lock
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
