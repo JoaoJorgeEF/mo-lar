@@ -1,51 +1,23 @@
 class UsuariosController < ApplicationController
-  before_action :set_usuario, only: %i[ show update destroy ]
+    before_action :authenticate_user!
 
-  # GET /usuarios
-  def index
-    @usuarios = Usuario.all
-
-    render json: @usuarios
-  end
-
-  # GET /usuarios/1
-  def show
-    render json: @usuario
-  end
-
-  # POST /usuarios
-  def create
-    @usuario = Usuario.new(usuario_params)
-
-    if @usuario.save
-      render json: @usuario, status: :created, location: @usuario
-    else
-      render json: @usuario.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /usuarios/1
-  def update
-    if @usuario.update(usuario_params)
-      render json: @usuario
-    else
-      render json: @usuario.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /usuarios/1
-  def destroy
-    @usuario.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_usuario
-      @usuario = Usuario.find(params[:id])
+    def index
     end
 
-    # Only allow a list of trusted parameters through.
-    def usuario_params
-      params.require(:usuario).permit(:nome, :telefone, :email, :senha, :cpf)
+    def show
+    end
+
+    def update
+        if current_user.update_attributes(user_params)
+            render :show
+        else
+            render json: { errors: current_user.errors }, status: :unprocessable_entity
+        end
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:username, :email, :password, :nome, :cpf, :telefone)
     end
 end

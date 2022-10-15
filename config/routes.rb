@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-<<<<<<< HEAD
-  namespace :api do
-    resources :usuarios, only: [:index, :delete, :create, :show]
+  # resources :usuarios 
+  scope :api, defaults: { format: :json } do
+    devise_for :usuarios, controllers: { sessions: :sessions },
+                          path_names: { sign_in: :login }
+
+    resource :usuario, only: [:index, :show, :update]
   end
-=======
-  resources :usuarios
->>>>>>> 39a2d5da8744b6169f6774822e6c20497d818406
 end

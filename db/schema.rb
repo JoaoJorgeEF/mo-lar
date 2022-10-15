@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_181818) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_144706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "usuarios", force: :cascade do |t|
-    t.string "nome"
-    t.string "telefone"
-    t.string "email"
-    t.string "senha"
-    t.string "cpf"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "nome"
+    t.string "cpf"
+    t.string "telefone"
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_usuarios_on_username", unique: true
   end
 
 end
