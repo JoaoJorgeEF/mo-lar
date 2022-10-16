@@ -5,20 +5,22 @@ class UsuariosController < ApplicationController
   def index
     @usuarios = Usuario.all
 
-    render json: @usuarios
+    render json: @usuarios, include: [:endereco]
   end
 
   # GET /usuarios/1
   def show
-    render json: @usuario
+    render json: @usuario, include: [:endereco]
   end
 
   # POST /usuarios
   def create
     @usuario = Usuario.new(usuario_params)
+    #@usuario.build_endereco(logradouro: usuario_params[:nome])  - funciona
+    @usuario.build_endereco(logradouro: @usuario.endereco_attributes => logradouro)
 
     if @usuario.save
-      render json: @usuario, status: :created, location: @usuario
+      render json: @usuario, include: [:endereco], status: :created, location: @usuario
     else
       render json: @usuario.errors, status: :unprocessable_entity
     end
@@ -27,7 +29,7 @@ class UsuariosController < ApplicationController
   # PATCH/PUT /usuarios/1
   def update
     if @usuario.update(usuario_params)
-      render json: @usuario
+      render json: @usuario, include: [:endereco]
     else
       render json: @usuario.errors, status: :unprocessable_entity
     end
@@ -46,6 +48,10 @@ class UsuariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def usuario_params
-      params.require(:usuario).permit(:nome, :telefone, :email, :senha, :cpf)
+      params.require(:usuario).permit(:nome, :telefone, :email, :senha, :cpf, endereco_attributes: [:logradouro, :bairro, :numero_residencia, :cep])
+    end
+
+    def endereco_params
+      params.require(:usuario).permit(:logradouro, :bairro, :numero_residencia, :cep)
     end
 end
