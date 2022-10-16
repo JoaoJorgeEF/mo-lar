@@ -3,5 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :usuarios
+  devise_for :usuarios,
+  controllers: {
+      sessions: 'usuarios/sessions',
+      registrations: 'usuarios/registrations'
+  }
+  # resources :usuarios
+  namespace :api do
+    namespace :v1 do
+      resources :posts
+    end
+  end
 end
