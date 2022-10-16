@@ -5,7 +5,6 @@ class Api::V1::PostsController < ApplicationController
   # GET /api/v1/posts
   def index
     @api_v1_posts = Api::V1::Post.all
-    debugger
     render json: @api_v1_posts
   end
 
