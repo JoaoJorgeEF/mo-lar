@@ -1,6 +1,6 @@
 class Api::V1::UsuariosController < ApplicationController
     before_action :authenticate_usuario!
-    before_action :set_usuario, only: %i[ show update ]
+    before_action :set_usuario, only: %i[ show update destroy ]
   
     # GET /usuarios
     def index
@@ -21,6 +21,11 @@ class Api::V1::UsuariosController < ApplicationController
       else
         render json: @usuario.errors, status: :unprocessable_entity
       end
+    end
+
+        # DELETE /usuarios/1
+    def destroy
+      @usuario.destroy
     end
   
     private
