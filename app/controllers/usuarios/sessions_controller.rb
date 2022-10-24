@@ -3,7 +3,7 @@ class Usuarios::SessionsController < Devise::SessionsController
 
   private
   def respond_with(resource, _opts = {})
-    render json: { message: 'Logged.' }, status: :ok
+    render json: {message: "Logged in.", "usuario": current_usuario}, status: :ok
   end
   def respond_to_on_destroy
     current_usuario ? log_out_failure : log_out_success
