@@ -3,7 +3,8 @@ class Usuarios::SessionsController < Devise::SessionsController
 
   private
   def respond_with(resource, _opts = {})
-    render json: {message: "Logged in.", "usuario": current_usuario}, status: :ok
+    @endereco = Endereco.where(usuario_id: current_usuario.id)
+    render json: {message: "Logged in.", "usuario": current_usuario, "endereco": @endereco}, status: :ok
   end
   def respond_to_on_destroy
     current_usuario ? log_out_failure : log_out_success
