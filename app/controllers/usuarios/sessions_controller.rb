@@ -3,7 +3,7 @@ class Usuarios::SessionsController < Devise::SessionsController
 
   private
   def respond_with(resource, _opts = {})
-    @endereco = Endereco.where(usuario_id: current_usuario.id)
+    @endereco = Endereco.where(usuario_id: current_usuario.id)[0]
     @jwt = current_token
     render json: {message: "Logged in.", "usuario": current_usuario, "endereco": @endereco, "Authorization": @jwt} , status: :ok
   end
