@@ -36,7 +36,7 @@ class Api::V1::UsuariosController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def usuario_params
-        params.require(:usuario).permit(:nome, :telefone, :cpf, endereco_attributes: [:logradouro, :bairro, :numero_residencia, :cep])
+        params.require(:usuario).permit(:nome, :telefone, :cpf, endereco_attributes: [:id, :usuario_id, :logradouro, :bairro, :numero_residencia, :cep])
       end
   
       def endereco_params
