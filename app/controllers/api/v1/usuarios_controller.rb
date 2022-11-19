@@ -1,5 +1,5 @@
 class Api::V1::UsuariosController < ApplicationController
-    before_action :authenticate_usuario!
+    # before_action :authenticate_usuario!
     before_action :set_usuario, only: %i[ show update destroy ]
   
     # GET /usuarios
