@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Usuario, type: :model do
-  it "é válido quando todos os campos estão preenchidos" do
+  it "Usuario é cadastrado quando todos os campos são informados" do
     u = Usuario.new(email: 'email@example.com', nome: 'sqa user', cpf: '123456789', telefone: '40028922', password:'123456')
     expect(u).to be_valid
   end
@@ -71,7 +71,7 @@ RSpec.describe Usuario, type: :model do
     expect(u).not_to be_valid
   end
 
-  it "telefone contem caracteres" do
+  it "Usuário não é criado se telefone contem caracteres" do
     u = Usuario.new(email: 'email@example.com', nome: 's', cpf: '12345678911', telefone: '4002-8922', password:nil)
     expect(u).not_to be_valid
   end
