@@ -97,9 +97,9 @@ RSpec.describe Endereco, type: :model do
     expect(e).not_to be_valid
   end
 
-  it "numero_residencia contendo caracteres" do
+  it "CEP contendo caracteres" do
     u = Usuario.new(email: 'email@example.com', nome: 'sqa user', cpf: '123456789', telefone: '40028922', password:'123456')
-    e = Endereco.new(logradouro: 'rua do teste', bairro: 'Jardim teste', numero_residencia: '12-A' ,cep: '12345-678', usuario: u)
+    e = Endereco.new(logradouro: 'rua do teste', bairro: 'Jardim teste', numero_residencia: 'A' ,cep: '12345-678', usuario: u)
     expect(e).not_to be_valid
   end
 
