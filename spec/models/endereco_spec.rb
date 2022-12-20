@@ -85,7 +85,7 @@ RSpec.describe Endereco, type: :model do
     expect(e).not_to be_valid
   end
 
-  it "numero_residencia tendo caracteres" do
+  it "numero_residencia contendo caracteres" do
     u = Usuario.new(email: 'email@example.com', nome: 'sqa user', cpf: '123456789', telefone: '40028922', password:'123456')
     e = Endereco.new(logradouro: 'rua do teste', bairro: 'Jardim teste', numero_residencia: '12-A' ,cep: '12345678', usuario: u)
     expect(e).not_to be_valid
@@ -97,7 +97,7 @@ RSpec.describe Endereco, type: :model do
     expect(e).not_to be_valid
   end
 
-  it "numero_residencia tendo caracteres" do
+  it "numero_residencia contendo caracteres" do
     u = Usuario.new(email: 'email@example.com', nome: 'sqa user', cpf: '123456789', telefone: '40028922', password:'123456')
     e = Endereco.new(logradouro: 'rua do teste', bairro: 'Jardim teste', numero_residencia: '12-A' ,cep: '12345-678', usuario: u)
     expect(e).not_to be_valid
@@ -109,7 +109,7 @@ RSpec.describe Endereco, type: :model do
     expect(e).not_to be_valid
   end
 
-  it "maior do que 40 caracteres" do
+  it "Rua maior do que 40 caracteres" do
     u = Usuario.new(email: 'email@example.com', nome: 'sqa user', cpf: '123456789', telefone: '40028922', password:'123456')
     e = Endereco.new(logradouro: 'Rua do teste', bairro: 'Jardim Pedro de Alcântara Francisco ', numero_residencia: '42', cep: '12345678', usuario: u)
     expect(e).not_to be_valid
